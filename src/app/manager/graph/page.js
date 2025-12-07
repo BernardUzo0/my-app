@@ -14,7 +14,8 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
-import { BarChart } from '@mui/x-charts/BarChart';
+import { LineChart } from '@mui/x-charts/LineChart';
+
 
 export default function ManagerGraphPage() {
   const [labels, setLabels] = useState([]);
@@ -61,17 +62,13 @@ export default function ManagerGraphPage() {
               </Typography>
 
               {labels.length > 0 ? (
-                <BarChart
-                  xAxis={[{ scaleType: 'band', data: labels }]}
-                  series={[
-                    {
-                      data: values,
-                      label: 'Sales (€)',
-                    },
-                  ]}
-                  width={700}
-                  height={400}
-                />
+              <LineChart
+              xAxis={[{ scaleType: 'point', data: labels }]}
+              series={[{ data: values, label: 'Sales (€)' }]}
+              width={700}
+              height={400}
+              />
+
               ) : (
                 <Typography>No data yet. Place some orders first.</Typography>
               )}
